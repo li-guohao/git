@@ -353,7 +353,7 @@ void credential_fill(struct credential *c)
 
 	for (i = 0; i < c->helpers.nr; i++) {
 		credential_do(c, c->helpers.items[i].string, "get");
-		if (c->password_expiry_utc < time(NULL)) {
+		if (c->password_expiry_utc < time_now()) {
 			/* Discard expired password */
 			FREE_AND_NULL(c->password);
 			/* Reset expiry to maintain consistency */
@@ -377,7 +377,7 @@ void credential_approve(struct credential *c)
 
 	if (c->approved)
 		return;
-	if (!c->username || !c->password || c->password_expiry_utc < time(NULL))
+	if (!c->username || !c->password || c->password_expiry_utc < time_now())
 		return;
 
 	credential_apply_config(c);

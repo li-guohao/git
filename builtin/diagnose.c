@@ -11,7 +11,7 @@ static const char * const diagnose_usage[] = {
 int cmd_diagnose(int argc, const char **argv, const char *prefix)
 {
 	struct strbuf zip_path = STRBUF_INIT;
-	time_t now = time(NULL);
+	time_t now = time_now();
 	struct tm tm;
 	enum diagnose_mode mode = DIAGNOSE_STATS;
 	char *option_output = NULL;

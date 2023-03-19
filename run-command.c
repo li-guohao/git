@@ -1864,7 +1864,7 @@ enum start_bg_result start_bg_command(struct child_process *cmd,
 		goto done;
 	}
 
-	time(&time_limit);
+	time_limit = time_now();
 	time_limit += timeout_sec;
 
 wait:
@@ -1891,7 +1891,7 @@ wait:
 			 */
 			time_t now;
 
-			time(&now);
+			now = time_now();
 			if (now < time_limit)
 				goto wait;
 

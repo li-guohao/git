@@ -237,7 +237,7 @@ static int cmd_reflog_show(int argc, const char **argv, const char *prefix)
 static int cmd_reflog_expire(int argc, const char **argv, const char *prefix)
 {
 	struct cmd_reflog_expire_cb cmd = { 0 };
-	timestamp_t now = time(NULL);
+	timestamp_t now = time_now();
 	int i, status, do_all, all_worktrees = 1;
 	unsigned int flags = 0;
 	int verbose = 0;

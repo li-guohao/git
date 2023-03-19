@@ -414,7 +414,7 @@ static struct fsmonitor_token_data *fsmonitor_new_token_data(void)
 	 * events to accumulate.
 	 */
 	if (test_env_value)
-		batch->pinned_time = time(NULL);
+		batch->pinned_time = time_now();
 
 	return token;
 }
@@ -771,7 +771,7 @@ static int do_handle_client(struct fsmonitor_daemon_state *state,
 	 */
 	token_data = state->current_token_data;
 	batch_head = token_data->batch_head;
-	((struct fsmonitor_batch *)batch_head)->pinned_time = time(NULL);
+	((struct fsmonitor_batch *)batch_head)->pinned_time = time_now();
 
 	/*
 	 * FSMonitor Protocol V2 requires that we send a response header

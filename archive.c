@@ -470,7 +470,7 @@ static void parse_treeish_arg(const char **argv,
 		archive_time = commit->date;
 	} else {
 		commit_oid = NULL;
-		archive_time = time(NULL);
+		archive_time = time_now();
 	}
 	if (ar_args->mtime_option)
 		archive_time = approxidate(ar_args->mtime_option);
