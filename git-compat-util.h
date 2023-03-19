@@ -341,7 +341,10 @@ int compat_mkdir_wo_trailing_slash(const char*, mode_t);
 
 static inline time_t time_now(void)
 {
-	return time(NULL);
+	/* Avoid time(NULL), which can disagree with gettimeofday etc.  */
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return tv.tv_sec;
 }
 
 #ifdef NO_STRUCT_ITIMERVAL
