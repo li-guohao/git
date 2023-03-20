@@ -339,6 +339,14 @@ static inline const char *precompose_string_if_needed(const char *in)
 int compat_mkdir_wo_trailing_slash(const char*, mode_t);
 #endif
 
+static inline time_t time_now(void)
+{
+	/* Avoid time(NULL), which can disagree with gettimeofday etc.  */
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return tv.tv_sec;
+}
+
 #ifdef NO_STRUCT_ITIMERVAL
 struct itimerval {
 	struct timeval it_interval;

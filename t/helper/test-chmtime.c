@@ -7,7 +7,7 @@
  *
  *	test-tool chmtime =<seconds> file...
  *
- * Relative to the current time as returned by time(3):
+ * Relative to the current time as returned by time_now():
  *
  *	test-tool chmtime =+<seconds> (or =-<seconds>) file...
  *
@@ -60,7 +60,7 @@ static int timespec_arg(const char *arg, long int *set_time, int *set_eq)
 		return 0;
 	}
 	if ((*set_eq && *set_time < 0) || *set_eq == 2) {
-		time_t now = time(NULL);
+		time_t now = time_now();
 		*set_time += now;
 	}
 	return 1;

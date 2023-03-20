@@ -459,7 +459,7 @@ static int refresh_lock(struct remote_lock *lock)
 			fprintf(stderr, "LOCK HTTP error %ld\n",
 				results.http_code);
 		} else {
-			lock->start_time = time(NULL);
+			lock->start_time = time_now();
 			rc = 1;
 		}
 	}
@@ -473,7 +473,7 @@ static int refresh_lock(struct remote_lock *lock)
 static void check_locks(void)
 {
 	struct remote_lock *lock = repo->locks;
-	time_t current_time = time(NULL);
+	time_t current_time = time_now();
 	int time_remaining;
 
 	while (lock) {
@@ -933,7 +933,7 @@ static struct remote_lock *lock_remote(const char *path, long timeout)
 		FREE_AND_NULL(lock);
 	} else {
 		lock->url = url;
-		lock->start_time = time(NULL);
+		lock->start_time = time_now();
 		lock->next = repo->locks;
 		repo->locks = lock;
 	}

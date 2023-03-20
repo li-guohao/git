@@ -411,7 +411,7 @@ static int client__stop_server(void)
 	time_t time_limit, now;
 	enum ipc_active_state s;
 
-	time(&time_limit);
+	time_limit = time_now();
 	time_limit += cl_args.max_wait_sec;
 
 	cl_args.token = "quit";
@@ -434,7 +434,7 @@ static int client__stop_server(void)
 			return 0;
 		}
 
-		time(&now);
+		now = time_now();
 		if (now > time_limit)
 			return error("daemon has not shutdown yet");
 	}

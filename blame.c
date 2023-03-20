@@ -192,7 +192,7 @@ static struct commit *fake_working_tree_commit(struct repository *r,
 	struct strbuf msg = STRBUF_INIT;
 
 	repo_read_index(r);
-	time(&now);
+	now = time_now();
 	commit = alloc_commit_node(r);
 	commit->object.parsed = 1;
 	commit->date = now;

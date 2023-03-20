@@ -1179,7 +1179,7 @@ void rerere_gc(struct repository *r, struct string_list *rr)
 	DIR *dir;
 	struct dirent *e;
 	int i;
-	timestamp_t now = time(NULL);
+	timestamp_t now = time_now();
 	timestamp_t cutoff_noresolve = now - 15 * 86400;
 	timestamp_t cutoff_resolve = now - 60 * 86400;
 

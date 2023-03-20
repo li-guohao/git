@@ -3085,7 +3085,7 @@ static int init_mparams(void) {
 #ifdef WIN32
 	magic = (size_t)(GetTickCount() ^ (size_t)0x55555555U);
 #else
-      magic = (size_t)(time(0) ^ (size_t)0x55555555U);
+      magic = (size_t)(time_now() ^ (size_t)0x55555555U);
 #endif
       magic |= (size_t)8U;    /* ensure nonzero */
       magic &= ~(size_t)7U;   /* improve chances of fault for bad values */

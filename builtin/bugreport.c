@@ -98,7 +98,7 @@ int cmd_bugreport(int argc, const char **argv, const char *prefix)
 	struct strbuf buffer = STRBUF_INIT;
 	struct strbuf report_path = STRBUF_INIT;
 	int report = -1;
-	time_t now = time(NULL);
+	time_t now = time_now();
 	struct tm tm;
 	enum diagnose_mode diagnose = DIAGNOSE_NONE;
 	char *option_output = NULL;
